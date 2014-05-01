@@ -12,7 +12,10 @@ FROM reliableembeddedsystems/ubuntu-base
 RUN apt-get install -y gawk wget git-core diffstat unzip texinfo gcc-multilib build-essential chrpath libsdl1.2-dev xterm
 
 # Set environment variables.
-ENV HOME /root
+ENV HOME /home/student
 
 # Define working directory.
-WORKDIR /root
+WORKDIR /home/student
+
+# Default User
+USER student

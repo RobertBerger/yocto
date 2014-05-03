@@ -12,13 +12,13 @@ FROM reliableembeddedsystems/ubuntu-base
 RUN sudo apt-get install -y gawk wget git-core diffstat unzip texinfo gcc-multilib build-essential chrpath libsdl1.2-dev xterm
 
 # somehow permissions got screwed up
-RUN chown -R student:student /home/student
+RUN chown -R genius:genius /home/genius
 
 # Set environment variables.
-ENV HOME /home/student
+ENV HOME /home/genius
 
 # Define working directory.
-WORKDIR /home/student
+WORKDIR /home/genius
 
 # Default User
-USER student
+USER genius

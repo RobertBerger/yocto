@@ -1,4 +1,4 @@
-IMAGE_NAME="reslocal/yocto"
+IMAGE_NAME="reliableembeddedsystems/yocto"
 HOST_FOLDER="${HOME}/yocto-image"
 IMAGE_FOLDER="/home/genius/yocto"
 # this is a hack against permission denied

@@ -1,6 +1,6 @@
 IMAGE_NAME="reslocal/yocto"
-HOST_FOLDER="${HOME}/yocto-image"
-IMAGE_FOLDER="/home/genius/yocto"
+#HOST_FOLDER="${HOME}/yocto-image"
+#IMAGE_FOLDER="/home/genius/yocto"
 # this is a hack against permission denied
 if [ ! -d ${HOST_FOLDER} ];
 then
@@ -15,8 +15,10 @@ fi
 #ID=$(docker run -p 127.0.0.1::22 -i -t -d ${IMAGE_NAME} /bin/bash)
 #echo "+ ID=\$(docker run -i -t -d ${IMAGE_NAME} /bin/bash)"
 #ID=$(docker run -i -t -d ${IMAGE_NAME} /bin/bash)
-echo "+ ID=\$(docker run -i -t -d -v ${HOST_FOLDER}:${IMAGE_FOLDER}:rw ${IMAGE_NAME} /bin/bash)"
-ID=$(docker run -i -t -d -v ${HOST_FOLDER}:${IMAGE_FOLDER}:rw ${IMAGE_NAME} /bin/bash)
+#echo "+ ID=\$(docker run -i -t -d -v ${HOST_FOLDER}:${IMAGE_FOLDER}:rw ${IMAGE_NAME} /bin/bash)"
+#ID=$(docker run -i -t -d -v ${HOST_FOLDER}:${IMAGE_FOLDER}:rw ${IMAGE_NAME} /bin/bash)
+echo "+ ID=\$(docker run -i -t -d ${IMAGE_NAME} /bin/bash)"
+ID=$(docker run -i -t -d ${IMAGE_NAME} /bin/bash)
 #echo "+ IPAddress: $(docker inspect --format '{{ .NetworkSettings.IPAddress }}' ${ID})"
 # ssh does not work for now
 #echo "+ ssh to: $(docker port ${ID} 22)"

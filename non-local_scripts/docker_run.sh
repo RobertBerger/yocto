@@ -1,13 +1,4 @@
-IMAGE_NAME="reliableembeddedsystems/yocto"
-# this is a hack against permission denied
-if [ ! -d ${HOST_FOLDER} ];
-then
-     echo "${HOST_FOLDER} does not exist, creating it"
-     mkdir -p ${HOST_FOLDER}
-     chmod a+w ${HOST_FOLDER}
-else
-     echo "${HOST_FOLDER} exists"
-fi
+IMAGE_NAME=$1
 # let's run it - we'll share a folder with the host
 echo "+ ID=\$(docker run -i -t -d ${IMAGE_NAME} /bin/bash)"
 ID=$(docker run -i -t -d ${IMAGE_NAME} /bin/bash)

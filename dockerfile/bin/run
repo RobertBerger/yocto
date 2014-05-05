@@ -1,0 +1,24 @@
+#!/bin/bash
+set -e
+
+if [ "$(id -u)" == "0" ]; then
+  unset SUDO
+else
+  SUDO=sudo 
+fi
+
+if [ ! -d /dev/net ]; then
+  ${SUDO} mkdir -p /dev/net
+fi
+
+if [ ! -f /dev/net/tun ]; then
+  sudo mknod /dev/net/tun c 10 200
+  ${SUDO} chmod 666 /dev/net/tun
+fi
+
+${SUDO} service ssh restart
+
+if [ "$(id -u)" == "0" ]; then
+  cd /home/genius
+  su genius
+fi

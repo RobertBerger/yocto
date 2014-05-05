@@ -11,12 +11,18 @@ if [ ! -d /dev/net ]; then
   ${SUDO} mkdir -p /dev/net
 fi
 
-if [ ! -f /dev/net/tun ]; then
+if [ ! -c /dev/net/tun ]; then
   sudo mknod /dev/net/tun c 10 200
   ${SUDO} chmod 666 /dev/net/tun
 fi
 
-${SUDO} service ssh restart
+
+if (( $(ps -ef | grep -v grep | grep ssh | wc -l) > 0 ))
+then
+  echo "ssh server is already up and running"
+else
+  ${SUDO} service ssh start
+fi
 
 if [ "$(id -u)" == "0" ]; then
   cd /home/genius

@@ -5,7 +5,7 @@
 #
 
 # Pull base image.
-FROM reliableembeddedsystems/ubuntu-base
+FROM reslocal/ubuntu-base
 
 # Ubuntu and Debian Yocto dependencies:
 # The essential and graphical support packages you need for a supported Ubuntu or Debian distribution are shown in the following command: 
@@ -15,11 +15,11 @@ RUN sudo apt-get install -y gawk wget git-core diffstat unzip texinfo gcc-multil
 RUN sudo apt-get install -y iptables
 
 # update /usr/local/sbin/run
-ADD ./bin /usr/local/sbin
-RUN sudo chmod +x /usr/local/sbin/run
+#ADD ./bin /usr/local/sbin
+#RUN sudo chmod +x /usr/local/sbin/run
 
 # somehow permissions got screwed up
-RUN chown -R genius:genius /home/genius
+#RUN chown -R genius:genius /home/genius
 
 # Set environment variables.
 #ENV HOME /home/genius
@@ -31,5 +31,8 @@ RUN chown -R genius:genius /home/genius
 #USER genius
 
 # default command
-CMD ["/bin/bash"]
+#CMD ["/bin/bash"]
+# Use baseimage-docker's init system.
+CMD ["/sbin/my_init"]
+
 

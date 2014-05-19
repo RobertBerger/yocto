@@ -6,6 +6,7 @@ then
     echo "+ $0: Too few arguments!"
     echo "+ use something like:"
     echo "+ $0 <docker image> <network interface>" 
+    echo "+ $0 reslocal/yocto docker0"
     echo "+ $0 reslocal/yocto br0"
     exit
 fi

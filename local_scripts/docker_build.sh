@@ -1,1 +1,1 @@
-docker build -t reslocal/yocto ../dockerfile/
+docker build --rm=true -t reslocal/yocto ../dockerfile/

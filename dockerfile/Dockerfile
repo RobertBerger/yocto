@@ -14,25 +14,8 @@ RUN sudo apt-get install -y gawk wget git-core diffstat unzip texinfo gcc-multil
 # qemu dependencies
 RUN sudo apt-get install -y iptables
 
-# update /usr/local/sbin/run
-#ADD ./bin /usr/local/sbin
-#RUN sudo chmod +x /usr/local/sbin/run
+# we need the /dev/net/tun interface for qemu
+RUN HERE=$(pwd)&&cd /dev&&MAKEDEV tun&&cd ${HERE}
 
-# somehow permissions got screwed up
-#RUN chown -R genius:genius /home/genius
-
-# Set environment variables.
-#ENV HOME /home/genius
-
-# Define working directory.
-#WORKDIR /home/genius
-
-# Default User
-#USER genius
-
-# default command
-#CMD ["/bin/bash"]
 # Use baseimage-docker's init system.
 CMD ["/sbin/my_init"]
-
-

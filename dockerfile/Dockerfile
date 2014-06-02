@@ -14,8 +14,5 @@ RUN sudo apt-get install -y gawk wget git-core diffstat unzip texinfo gcc-multil
 # qemu dependencies
 RUN sudo apt-get install -y iptables
 
-# we need the /dev/net/tun interface for qemu
-RUN HERE=$(pwd)&&cd /dev&&MAKEDEV tun&&cd ${HERE}
-
 # Use baseimage-docker's init system.
 CMD ["/sbin/my_init"]

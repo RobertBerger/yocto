@@ -6,6 +6,7 @@ then
     echo "+ $0: Too few arguments!"
     echo "+ use something like:"
     echo "+ $0 <docker image> <network interface>" 
+    echo "+ $0 reslocal/yocto docker0"
     echo "+ $0 reslocal/yocto br0"
     exit
 fi
@@ -15,8 +16,11 @@ echo "+ sudo modprobe tun"
 sudo modprobe tun
 
 # run the image
-echo "+ ID=\$(docker run -i -t -d -p 22 --privileged ${IMAGE_NAME} /bin/bash)"
-ID=$(docker run -i -t -d -p 22 --privileged ${IMAGE_NAME} /bin/bash)
+#echo "+ ID=\$(docker run -i -t -d -p 22 --privileged ${IMAGE_NAME} /bin/bash)"
+#ID=$(docker run -i -t -d -p 22 --privileged ${IMAGE_NAME} /bin/bash)
+
+echo "+ ID=\$(docker run -t -i -d -p 22 --privileged ${IMAGE_NAME} /sbin/my_init -- bash -l)"
+ID=$(docker run -t -i -d -p 22 --privileged ${IMAGE_NAME} /sbin/my_init -- bash -l)
 
 # ssh stuff:
 PORT=$(docker port ${ID} 22 | awk -F':' '{ print $2 }')

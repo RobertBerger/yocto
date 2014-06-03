@@ -14,5 +14,8 @@ RUN sudo apt-get install -y gawk wget git-core diffstat unzip texinfo gcc-multil
 # qemu dependencies
 RUN sudo apt-get install -y iptables
 
+# u-boot might need this e.g. for imx28
+RUN sudo apt-get install -y libssl-dev
+
 # Use baseimage-docker's init system.
 CMD ["/sbin/my_init"]

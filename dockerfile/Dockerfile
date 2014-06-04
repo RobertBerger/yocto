@@ -17,5 +17,8 @@ RUN sudo apt-get install -y iptables
 # u-boot might need this e.g. for imx28
 RUN sudo apt-get install -y libssl-dev
 
+# kernel compilation rpi needs this
+RUN sudo apt-get install -y bc
+
 # Use baseimage-docker's init system.
 CMD ["/sbin/my_init"]

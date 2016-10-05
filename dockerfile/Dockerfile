@@ -20,5 +20,8 @@ RUN sudo apt-get install -y libssl-dev
 # kernel compilation rpi needs this
 RUN sudo apt-get install -y bc libncursesw5-dev
 
+# Y-AB/bitbake complain
+RUN sudo apt-get install -y cpio
+
 # Use baseimage-docker's init system.
 CMD ["/sbin/my_init"]

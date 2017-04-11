@@ -8,8 +8,11 @@
 FROM reliableembeddedsystems/ubuntu-base
 
 # Ubuntu and Debian Yocto dependencies:
-# The essential and graphical support packages you need for a supported Ubuntu or Debian distribution are shown in the following command: 
+# The essential and graphical support packages (older) you need for a supported Ubuntu or Debian distribution are shown in the following command: 
 RUN sudo apt-get install -y gawk wget git-core diffstat unzip texinfo gcc-multilib build-essential chrpath libsdl1.2-dev xterm
+
+# Essentials (Morty) Packages needed to build an image on a headless system: 
+RUN sudo apt-get install -y gawk wget git-core diffstat unzip texinfo gcc-multilib build-essential chrpath socat cpio python python3 python3-pip python3-pexpect xz-utils debianutils
 
 # qemu dependencies
 RUN sudo apt-get install -y iptables

@@ -16,8 +16,8 @@ echo "+ sudo modprobe tun"
 sudo modprobe tun
 
 # run the image
-echo "+ ID=\$(docker run -t -i -d -p 22 --privileged ${IMAGE_NAME} /sbin/my_init -- bash -l)"
-ID=$(docker run -t -i -d -p 22 --privileged ${IMAGE_NAME} /sbin/my_init -- bash -l)
+echo "+ ID=\$(docker run -v ${HOME}/docker-nonvol-scripts:/home/genius/nonvol-scripts -t -i -d -p 22 --privileged ${IMAGE_NAME} /sbin/my_init -- bash -l)"
+ID=$(docker run -v ${HOME}/docker-nonvol-scripts:/home/genius/nonvol-scripts -t -i -d -p 22 --privileged ${IMAGE_NAME} /sbin/my_init -- bash -l)
 
 # ssh stuff:
 PORT=$(docker port ${ID} 22 | awk -F':' '{ print $2 }')

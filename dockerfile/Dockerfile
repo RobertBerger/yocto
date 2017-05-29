@@ -5,7 +5,8 @@
 #
 
 # Pull base image.
-FROM reliableembeddedsystems/ubuntu-base
+FROM reliableembeddedsystems/ubuntu-base:pyro-2017-05-29
+#FROM reslocal/ubuntu-base
 
 # Ubuntu and Debian Yocto dependencies:
 # The essential and graphical support packages (older) you need for a supported Ubuntu or Debian distribution are shown in the following command: 
@@ -25,6 +26,9 @@ RUN sudo apt-get install -y bc libncursesw5-dev
 
 # Y-AB/bitbake complain
 RUN sudo apt-get install -y cpio
+
+# Y-AB ping missing
+RUN sudo apt-get install -y iputils-ping
 
 # Use baseimage-docker's init system.
 CMD ["/sbin/my_init"]
